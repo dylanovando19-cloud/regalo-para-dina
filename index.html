@@ -1,20 +1,78 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
-  <title>Para Mi Amiga</title>
-  <style>
-    body { font-family: Arial; text-align: center; background: #ffeaa7; }
-    h1 { color: #d63031; }
-  </style>
+<meta charset="UTF-8">
+<title>Para Mi Amiga</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: #ffeaa7;
+    overflow: hidden;
+    height: 100vh;
+    margin: 0;
+    position: relative;
+  }
+
+  h1 {
+    color: #d63031;
+    margin-top: 50px;
+  }
+
+  p {
+    font-size: 18px;
+  }
+
+  img {
+    width: 200px;
+    margin: 20px 0;
+    border-radius: 10px;
+  }
+
+  .rose {
+    position: absolute;
+    top: -50px;
+    width: 30px;
+    height: 30px;
+    background-image: url('rosita.png'); /* reemplaza por tu imagen de rosa o usa emoji */
+    background-size: cover;
+    pointer-events: none;
+    animation: fall linear infinite;
+  }
+
+  @keyframes fall {
+    0% { transform: translateY(-50px) rotate(0deg); }
+    100% { transform: translateY(100vh) rotate(360deg); }
+  }
+</style>
 </head>
 <body>
-  <h1>🌸 Para Ti 🌸</h1>
-  <p>Gracias por ser una amiga especial 💖</p>
-  <img src="https://i.imgur.com/xyz.png" width="300">
-  <p>Puedes escuchar esta canción mientras lees 🎶</p>
-  <audio controls>
-    <source src="tu-cancion.mp3" type="audio/mpeg">
-  </audio>
+
+<h1>🌸 Para Ti 🌸</h1>
+<p>Gracias por ser una amiga especial 💖</p>
+<img src="a17edb46-f132-4fe0-9462-8b38c88e6526.png" alt="Foto para amiga">
+
+<p>Puedes escuchar esta canción mientras lees 🎶</p>
+<audio controls>
+  <source src="tu-cancion.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+  // Crear rosas cayendo
+  function createRose() {
+    const rose = document.createElement('div');
+    rose.classList.add('rose');
+    rose.style.left = Math.random() * window.innerWidth + 'px';
+    rose.style.animationDuration = (3 + Math.random() * 5) + 's';
+    document.body.appendChild(rose);
+
+    setTimeout(() => {
+      rose.remove();
+    }, 8000);
+  }
+
+  setInterval(createRose, 500); // cada 0.5s cae una rosa
+</script>
+
 </body>
 </html>
